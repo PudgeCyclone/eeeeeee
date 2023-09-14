@@ -1,0 +1,96 @@
+	# def main(number):
+    
+#     num_2 = bin(int(number))[2:]
+    
+#     print(num_2)
+#     w1 = int(num_2[-2:],2)
+#     num_2 = num_2[:-2]
+#     w2 = int(num_2[-3:],2)
+#     num_2 = num_2[:-3]
+#     w3 = int(num_2[-6:],2)
+#     num_2 = num_2[:-6]
+#     w4 = int(num_2[-1:],2)
+#     num_2 = num_2[:-1]
+#     w5 = int(num_2,2)
+
+#     return (str(w1),str(w2),str(w3),str(w4),str(w5))
+    
+# print(main('166247'))
+
+# 4 Вариант
+# def main(lst: list):
+    
+#     num_1 = bin(lst[0][1])[2:]
+#     num_2 = bin(lst[1][1])[2:]
+#     num_3 = bin(lst[2][1])[2:]
+#     num_4 = bin(lst[3][1])[2:]
+#     num_5 = bin(lst[4][1])[2:]
+    
+#     while(len(num_1) < 5):
+#         num_1 = '0'+num_1
+#     while(len(num_2) < 6):
+#         num_2 = '0'+num_2
+#     while(len(num_3) < 6):
+#         num_3 = '0'+num_3
+#     while(len(num_4) < 6):
+#         num_4 = '0'+num_4
+#     while(len(num_5) < 8):
+#         num_5 = '0'+num_5
+
+#     result = num_5+num_4+num_3+num_2+num_1
+
+
+#     return int(result, 2)
+    
+# print(main([('X1', 21), ('X2', 29), ('X3', 24), ('X4', 29), ('X5', 246)]))
+# print(main([('X1', 29), ('X2', 38), ('X3', 54), ('X4', 29), ('X5', 29)]))
+# print(main([('X1', 26), ('X2', 10), ('X3', 11), ('X4', 22), ('X5', 206)]))
+# print(main([('X1', 5), ('X2', 40), ('X3', 21), ('X4', 19), ('X5', 386)]))
+
+#5 Вариант
+# def main(lst: list):
+    
+#     num_1 = bin(int(lst[0], 16))[2:]
+#     num_2 = bin(int(lst[1], 16))[2:]
+#     num_3 = bin(int(lst[2], 16))[2:]
+#     while(len(num_1) < 7):
+#         num_1 = '0'+num_1
+#     while(len(num_2) < 6):
+#         num_2 = '0'+num_2
+#     while(len(num_3) < 10):
+#         num_3 = '0'+num_3
+
+#     result = '00'+num_3+num_2+num_1
+#     return int(result, 2)
+    
+# print(main(('0x5', '0x35', '0xe0')))
+# print(main(('0x2d', '0x36', '0x2ce')))
+# print(main(('0x5b', '0x1', '0x296')))
+# print(main(('0x9', '0x29', '0x17e')))
+
+#6 Вариант
+# def main(dct: dict):
+#     num_1 = bin(int(dct['S1'],16))[2:]
+#     num_2 = bin(int(dct['S2'],16))[2:]
+#     num_3 = bin(int(dct['S3'],16))[2:]
+#     num_4 = bin(int(dct['S4'],16))[2:]
+#     while(len(num_1) < 3):
+#         num_1 = '0'+num_1
+#     while(len(num_2) < 1):
+#         num_2 = '0'+num_2
+#     while(len(num_3) < 7):
+#         num_3 = '0'+num_3
+#     while(len(num_4) < 6):
+#         num_4 = '0'+num_4
+        
+    
+#     result = num_4+num_3+num_2+num_1
+    
+#     return int(result, 2)
+
+# print(main({'S1': '0x3', 'S2': '0x1', 'S3': '0x5b', 'S4': '0xe'}))
+# print(main({'S1': '0x5', 'S2': '0x0', 'S3': '0x60', 'S4': '0x2d'}))
+# print(main({'S1': '0x5', 'S2': '0x1', 'S3': '0x6', 'S4': '0x2e'}))
+# print(main({'S1': '0x7', 'S2': '0x0', 'S3': '0x5f', 'S4': '0x1'}))
+
+
