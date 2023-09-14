@@ -1,3 +1,4 @@
+https://extendsclass.com/python-formatter.html
 class StateMachine:
     def __init__(self):
         self.state = 'A'
