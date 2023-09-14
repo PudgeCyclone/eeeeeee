@@ -1,0 +1,199 @@
+class StateMachine:
+    def __init__(self):
+        self.state = 'A'
+    def chalk(self):
+        if self.state == 'A':
+            self.state = 'B'
+            return 0
+        if self.state == 'B':
+            self.state = 'C'
+            return 3
+        if self.state == 'C':
+            self.state = 'D'
+            return 4
+        if self.state == 'D':
+            self.state = 'B'
+            return 7
+        raise MealyError('chalk')
+    def slip(self):
+        if self.state == 'D:
+            self.state = 'E'
+            return 5
+        if self.state == 'E':
+            self.state = 'F'
+            return 8
+        if self.state == 'A':
+            self.state = 'E'
+            return 1
+        raise MealyError('slip')
+    def pose(self):
+        if self.state == 'D':
+            self.state = 'F'
+            return 6
+        if self.state == 'A':
+            self.state = 'F'
+            return 2
+        raise MealyError('pose')
+        
+        
+class MealyError(Exception):
+    pass
+
+
+def main():
+    return StateMachine()
+    
+    
+def raises(func, error):
+    output = None
+    try:
+        output = func()
+    except Exception as e:
+        assert type(e) == error
+    assert output is None    
+
+
+def test():
+    o = main()
+    assert o.chalk() == 0
+    raises(lambda: o.slip(), MealyError)
+    raises(lambda: o.pose(), MealyError)
+    assert o.chalk() == 3
+    raises(lambda: o.pose(), MealyError)
+    raises(lambda: o.slip(), MealyError)
+    assert o.chalk() == 4
+    assert o.chalk() == 7
+    raises(lambda: o.pose(), MealyError)
+    raises(lambda: o.slip(), MealyError)
+    assert o.chalk == 3
+    raises(lambda: o.pose(), MealyError)
+    raises(lambda: o.slip(), MealyError)
+    assert o.chalk == 4
+    assert o.slip == 5
+    raises(lambda: o.pose(), MealyError)
+    raises(lambda: o.chalk(), MealyError)
+    assert o.slip == 8
+    o = main()
+    assert o.slip() == 1
+    raises(lambda: o.pose(), MealyError)
+    raises(lambda: o.chalk(), MealyError)
+    assert o.slip() == 8
+    o = main()
+    assert o.pose() == 2
+
+№ 6
+def first(x4, x3, x2, x1, x0):
+    if x4 == 1992:
+        return 8 
+    if x4 == 2004:
+        return last_down(x1)
+    if x4 == 2010:
+        return second_up(x3, x2, x1, x0)
+
+def second_up(x3, x2, x1, x0):
+    if x3 == 'PONY':
+        return third_up(x1, x0)
+    if x3 == 'GRACE':
+        return 4
+    if x3 == 'JSON':
+        return third_down(x2)
+
+def third_up(x1, x0):
+    if x0 == 2002:
+        return 0
+    if x0 == 1978:
+        return last_up(x1)
+
+def last_up(x1):
+    if x1 == 1970:
+        return 1
+    if x1 == 1983:
+        return 2
+    if x1 == 1979:
+        return 3
+
+def third_down(x2):
+    if x2 == 'RHTML':
+        return 5
+    if x2 == 'DYLAN':
+        return 6
+    if x2 == 'SLIM':
+        return 7
+def last_down(x1):
+    if x1 == 1970:
+        return 9
+    if x1 == 1983:
+        return 10
+    if x1 == 1979:
+        return 11
+
+def main(x):
+    return first(x[4], x[3], x[2], x[1], x[0])
+
+№8 
+def main(x):
+    x = x.replace(' ', '')
+    x = x.replace("\n", '')
+    n = len(x)
+    a = ''
+    c = ''
+    b = []
+    d = []
+    e = []
+    flag = 0
+    flag_2 = 0
+    for i in range(n):
+        if x[i] == "'":
+            flag += 1
+        if (flag % 2 == 1 and x[i] != "'"):
+            a += x[i]
+        if (flag_2 % 2 == 1 and x[i] != "."):
+            c += x[i]
+        if x[i] == ".":
+            e.append((a, c))
+            c = ""
+            a = ""
+        if (x[i] == "=" or x[i] == "."):
+            flag_2 += 1
+            
+    return e
+
+№ 5
+import math
+
+
+def func(x):
+    res = 0
+    n = len(x)
+    for i in range(1, n + 1):
+        res += 61*((17*((x[n-i])**2)+x[math.ceil((i/4)-1)]+1)**4)
+    return res
+
+№7
+-----------------------------------------------------------------------------------------------------------------------
+Coding:
+def main(bits):
+    Z1 = int(bits[0])
+    Z2 = int(bits[1])
+    Z3 = int(bits[2])
+    Z4 = int(bits[3])
+    Z5 = int(bits[4])
+    Z6 = int(bits[5])
+
+    Z6 <<= 24
+    Z5 <<= 17
+    Z4 <<= 15
+    Z3 <<= 10
+    Z2 <<= 6
+
+    result = Z6 | Z5 | Z4 | Z3 | Z2 | Z1
+    return str(result)
+
+Decoding:
+def main(s):
+    i = int(s)
+    c1 = 0b1111111 & i
+    c2 = 0b1111111111 & (i >> 7) ~ кол-во прорезей
+    c3 = 0b11 & (i >> 17)
+    c5 = 0b111111111 & (i >> 27)
+    return tuple(map(str, (c1, c2, c3, c5)))
